@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 import pydeck as pdk
 import math
-import plotly as px
+# import plotly.express as px
 
 print(px.__version__)
 
@@ -83,11 +83,11 @@ st.pydeck_chart(pydeck_obj=pdk.Deck(layers = pdk.Layer("GridLayer",
                                                         pitch=45)
                                     )
                 )
-
+"""
 st.subheader('Distribuição dos preços dentro da faixa escolhida')
 
 st.plotly_chart( px.histogram(df_filtrado, x="preco", color="cat.semana",
                    marginal="box",
                    hover_data=df.columns).update_layout(xaxis_title='Preço dos Imóveis', yaxis_title='Contagem de imóveis'))
-
+"""
 
