@@ -5,6 +5,8 @@ import pydeck as pdk
 import math
 import plotly.express as px
 
+print(px.__version__)
+
 url1='https://raw.githubusercontent.com/Siri2191/study_area/main/streamlit/lisbon_weekdays.csv'
 url2='https://raw.githubusercontent.com/Siri2191/study_area/main/streamlit/lisbon_weekends.csv'
 
