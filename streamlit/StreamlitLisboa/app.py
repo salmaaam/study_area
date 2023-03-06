@@ -3,7 +3,7 @@ import numpy as np
 import streamlit as st
 import pydeck as pdk
 import math
-import plotly.express as px
+import plotly as px
 
 print(px.__version__)
 
