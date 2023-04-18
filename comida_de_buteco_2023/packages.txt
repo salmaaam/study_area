@@ -1,0 +1,5 @@
+pandas-dev
+numpy-dev
+streamlit-dev
+folium-dev
+streamlit_folium-dev
