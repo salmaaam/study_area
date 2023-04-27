@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -36,6 +34,7 @@ st.markdown('<p>O mapa mostra a localização dos bares do comida de buteco 2023
 
 bairros_unicos = df['bairros']
 bairros_selecionados = st.multiselect('Selecione o(s) bairro(s) que desejar', bairros_unicos)
+st.write( 'Logo abaixo você encontrará um descrição dos pratos nos bares selecionados')
 
 df_filtrado = df[df['bairros'].isin(bairros_selecionados)]
 # Gerar o mapa
@@ -48,12 +47,35 @@ else:
 
 st_folium(mapa,height=500,width=1000)
 
-if len(df_filtrado)>0:
-    st.table(df[['nome_do_bar','endereco','pratos']])
+# card extensivos dos bares
+
+if len(df_filtrado) > 0:
+    for i in df_filtrado.index:
+        
+        with st.expander('{}'.format(df_filtrado['nome_do_bar'][i])):
+            col1, col2 =st.columns(2)
+            with col1:
+                st.image(df_filtrado['link_da_Imagem'][i])
+            with col2:
+                st.title(':red[{}]'.format(df_filtrado['nome_do_bar'][i]))
+                st.write('O Bar se encontra no endereço:')
+                st.write(df_filtrado['endereco'][i])
+                
+        
 else:
-    st.table(df[['nome_do_bar','endereco','pratos']])
+    for i in range(len(df)):
+        with st.expander('{}'.format(df['nome_do_bar'][i])):
+            col1, col2 =st.columns(2)
+            with col1:
+                st.image(df['link_da_Imagem'][i])
+            with col2:
+                st.title(':red[{}]'.format(df['nome_do_bar'][i]))
+                st.write('O Bar se encontra no endereço:')
+                st.write(df['endereco'][i])
+                
 
 st.markdown('<p>Created by Guilherme Irigon</p>',unsafe_allow_html=True)
 
 st.write('<a href="https://www.linkedin.com/in/guilherme-irigon-22a1a458/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="30"></a> Linkedin',unsafe_allow_html=True)
 st.write('<a href="https://www.instagram.com/seedzz.digital/"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="30"></a> Instagram', unsafe_allow_html=True)
+st.title(' Acesse o site do comida di buteco para mais informações:  https://comidadibuteco.com.br')
